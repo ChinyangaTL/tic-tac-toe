@@ -4,12 +4,14 @@ type Props = {
   handleCellClick: (idx: number) => void;
   changePlayer: () => void;
   cellIdx: number;
+  currentGrid: string[];
 };
 
 const Square: React.FC<Props> = ({
   changePlayer,
   cellIdx,
   handleCellClick,
+  currentGrid,
 }) => {
   const handleClick = () => {
     handleCellClick(cellIdx);
@@ -17,7 +19,8 @@ const Square: React.FC<Props> = ({
   };
   return (
     <button onClick={handleClick} className='square'>
-      {cellIdx}
+      {currentGrid[cellIdx] === 'X' && <p>X</p>}
+      {currentGrid[cellIdx] === 'O' && <p>O</p>}
     </button>
   );
 };

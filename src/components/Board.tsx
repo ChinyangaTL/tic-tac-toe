@@ -11,10 +11,8 @@ const Board: React.FC<Props> = ({ changePlayer, currentPlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
 
   const handleClick = (cellIdx: number) => {
-    console.log(currentPlayer);
     const grid = [...squares];
     grid[cellIdx] = currentPlayer;
-
     console.log(grid);
     setSquares(grid);
   };
@@ -27,6 +25,7 @@ const Board: React.FC<Props> = ({ changePlayer, currentPlayer }) => {
           changePlayer={changePlayer}
           cellIdx={index}
           handleCellClick={handleClick}
+          currentGrid={squares}
         />
       ))}
     </div>
