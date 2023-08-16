@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header currentPlayer={currentPlayer} />
-      <Board changePlayer={changePlayer} />
+      <Board changePlayer={changePlayer} currentPlayer={currentPlayer} />
     </>
   );
 }
