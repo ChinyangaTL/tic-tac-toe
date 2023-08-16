@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Square from './Square';
+import { checkWinner } from '../utils/checkForWinner';
 
 type Props = {
   changePlayer: () => void;
@@ -8,13 +9,21 @@ type Props = {
 
 const Board: React.FC<Props> = ({ changePlayer, currentPlayer }) => {
   const [squares, setSquares] = useState(Array(9).fill(''));
+  const [winningPlayer, setWinningPlayer] = useState('');
 
   const handleClick = (cellIdx: number) => {
     const grid = [...squares];
     grid[cellIdx] = currentPlayer;
-    console.log(grid);
+
     setSquares(grid);
   };
+
+  useEffect(() => {
+    const winner = checkWinner(squares);
+    if (winner) {
+      setWinningPlayer(winner);
+    }
+  }, [squares]);
 
   return (
     <div className='board'>
@@ -27,6 +36,7 @@ const Board: React.FC<Props> = ({ changePlayer, currentPlayer }) => {
           currentGrid={squares}
         />
       ))}
+      {winningPlayer && <h2>{winningPlayer} wins!</h2>}
     </div>
   );
 };
