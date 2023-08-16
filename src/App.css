@@ -4,3 +4,15 @@
   padding: 2rem;
   text-align: center;
 }
+
+.board {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+}
