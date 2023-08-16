@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
   const [squares, setSquares] = useState(Array(9).fill(''));
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <>
-      <p>Current player is {currentPlayer}</p>
+      <Header currentPlayer={currentPlayer} />
       <div className='board'>
         {squares.map((square, index) => (
           <button onClick={changePlayer} key={index} className='square'>
