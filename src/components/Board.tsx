@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Board: React.FC<Props> = ({ changePlayer, currentPlayer }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [squares, setSquares] = useState(Array(9).fill(''));
 
   const handleClick = (cellIdx: number) => {

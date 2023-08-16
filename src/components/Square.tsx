@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type Props = {
   handleCellClick: (idx: number) => void;
@@ -13,12 +13,15 @@ const Square: React.FC<Props> = ({
   handleCellClick,
   currentGrid,
 }) => {
+  const [isSquareClicked, setIsSquareClicked] = useState(false);
+
   const handleClick = () => {
     handleCellClick(cellIdx);
     changePlayer();
+    setIsSquareClicked(true);
   };
   return (
-    <button onClick={handleClick} className='square'>
+    <button disabled={isSquareClicked} onClick={handleClick} className='square'>
       {currentGrid[cellIdx] === 'X' && <p>X</p>}
       {currentGrid[cellIdx] === 'O' && <p>O</p>}
     </button>
